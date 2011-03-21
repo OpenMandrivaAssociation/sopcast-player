@@ -2,7 +2,7 @@
 
 Summary:	A GUI front-end to SopCast
 Name:		sopcast-player
-Version:	0.3.3
+Version:	0.4.1
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Video
@@ -22,7 +22,7 @@ integrated video player, a channel guide, and bookmarks. Once SopCast Player is
 installed it simply "just works" with no required configuration.
 
 %prep
-%setup -q
+%setup -qn %{name}
 
 %build
 sed -i -e 's/libvlc.so/libvlc.so.2/g' lib/vlc.py
