@@ -2,7 +2,7 @@
 
 Summary:	A GUI front-end to SopCast
 Name:		sopcast-player
-Version:	0.4.1
+Version:	0.5.1
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Video
@@ -25,7 +25,8 @@ installed it simply "just works" with no required configuration.
 %setup -qn %{name}
 
 %build
-sed -i -e 's/libvlc.so/libvlc.so.2/g' lib/vlc.py
+sed -i -e 's/libvlc.so/libvlc.so.5/g' lib/vlc.py
+sed -i -e 's/gtk_update_icon_cache/#gtk_update_icon_cache/g' Makefile
 
 %setup_compile_flags
 %make
