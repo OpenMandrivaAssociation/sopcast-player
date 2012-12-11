@@ -62,3 +62,20 @@ sed -i -e 's/gtk_update_icon_cache/#gtk_update_icon_cache/g' Makefile
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/%{name}.svg
+
+
+%changelog
+* Tue Apr 26 2011 Tomasz Pawel Gajc <tpg@mandriva.org> 0.5.1-1mdv2011.0
++ Revision: 659420
+- update to new version 0.5.1
+- do not run gtk-update-icon-cache
+
+* Mon Mar 21 2011 Matthew Dawkins <mattydaw@mandriva.org> 0.4.1-1
++ Revision: 647431
+- new version 0.4.1
+
+* Sun Jul 11 2010 Tomasz Pawel Gajc <tpg@mandriva.org> 0.3.3-1mdv2011.0
++ Revision: 550990
+- import sopcast-player
+
+
