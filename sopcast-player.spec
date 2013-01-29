@@ -1,9 +1,12 @@
+# In fact, it's noarch package but it depends on 32 bit only sp-auth
+# So keep sopcast-player 32 bit only too
+%define _enable_debug_packages %{nil}
 %define debug_package %{nil}
 
 Summary:	A GUI front-end to SopCast
 Name:		sopcast-player
-Version:	0.5.1
-Release:	%mkrel 1
+Version:	0.8.5
+Release:	1
 License:	GPLv2+
 Group:		Video
 Url:		http://code.google.com/p/sopcast-player/
@@ -11,9 +14,11 @@ Source0:	http://sopcast-player.googlecode.com/files/%{name}-%{version}.tar.gz
 BuildRequires:	python-setuptools
 BuildRequires:	gettext
 BuildRequires:	vlc-devel
-Requires:	vlc
+Requires:	sp-auth
+Requires:	pygtk2
 Requires:	python
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+Requires:	vlc
+ExclusiveArch:	%{ix86}
 
 %description
 SopCast Player is designed to be an easy to use Linux GUI front-end for the p2p
@@ -25,57 +30,17 @@ installed it simply "just works" with no required configuration.
 %setup -qn %{name}
 
 %build
-sed -i -e 's/libvlc.so/libvlc.so.5/g' lib/vlc.py
-sed -i -e 's/gtk_update_icon_cache/#gtk_update_icon_cache/g' Makefile
-
 %setup_compile_flags
 %make
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
-
 %makeinstall_std
 
 %find_lang %{name}
 
-%post
-%{update_menus}
-%if %mdkversion >= 200700
-%{update_desktop_database}
-%update_icon_cache hicolor
-%endif
-
-%postun
-%{clean_menus}
-%if %mdkversion >= 200700
-%{clean_desktop_database}
-%clean_icon_cache hicolor
-%endif
-
-%clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
-
 %files -f %{name}.lang
-%defattr(-,root,root)
-%doc
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/%{name}.svg
-
-
-%changelog
-* Tue Apr 26 2011 Tomasz Pawel Gajc <tpg@mandriva.org> 0.5.1-1mdv2011.0
-+ Revision: 659420
-- update to new version 0.5.1
-- do not run gtk-update-icon-cache
-
-* Mon Mar 21 2011 Matthew Dawkins <mattydaw@mandriva.org> 0.4.1-1
-+ Revision: 647431
-- new version 0.4.1
-
-* Sun Jul 11 2010 Tomasz Pawel Gajc <tpg@mandriva.org> 0.3.3-1mdv2011.0
-+ Revision: 550990
-- import sopcast-player
-
 
