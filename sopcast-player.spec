@@ -6,7 +6,7 @@
 Summary:	A GUI front-end to SopCast
 Name:		sopcast-player
 Version:	0.8.5
-Release:	3
+Release:	4
 License:	GPLv2+
 Group:		Video
 Url:		http://code.google.com/p/sopcast-player/
