@@ -11,12 +11,12 @@ License:	GPLv2+
 Group:		Video
 Url:		http://code.google.com/p/sopcast-player/
 Source0:	http://sopcast-player.googlecode.com/files/%{name}-%{version}.tar.gz
-BuildRequires:	python-setuptools
+BuildRequires:	python2-setuptools
 BuildRequires:	gettext
 BuildRequires:	vlc-devel
 Requires:	sp-auth
 Requires:	pygtk2
-Requires:	python
+Requires:	python2
 Requires:	vlc
 ExclusiveArch:	%{ix86}
 
@@ -30,6 +30,7 @@ installed it simply "just works" with no required configuration.
 %setup -qn %{name}
 
 %build
+export PYTHON=%__python2
 %setup_compile_flags
 %make
 
