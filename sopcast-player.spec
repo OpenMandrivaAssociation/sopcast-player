@@ -9,7 +9,7 @@ Version:	0.8.5
 Release:	4
 License:	GPLv2+
 Group:		Video
-Url:		http://code.google.com/p/sopcast-player/
+Url:		https://code.google.com/p/sopcast-player/
 Source0:	http://sopcast-player.googlecode.com/files/%{name}-%{version}.tar.gz
 BuildRequires:	python2-setuptools
 BuildRequires:	gettext
